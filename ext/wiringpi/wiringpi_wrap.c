@@ -1846,7 +1846,7 @@ SWIG_ruby_failed(void)
 } 
 
 
-/*@SWIG:/usr/local/share/swig/2.0.7/ruby/rubyprimtypes.swg,19,%ruby_aux_method@*/
+/*@SWIG:/usr/share/swig2.0/ruby/rubyprimtypes.swg,19,%ruby_aux_method@*/
 SWIGINTERN VALUE SWIG_AUX_NUM2LONG(VALUE *args)
 {
   VALUE obj = args[0];
@@ -1891,7 +1891,7 @@ SWIG_AsVal_int (VALUE obj, int *val)
 }
 
 
-/*@SWIG:/usr/local/share/swig/2.0.7/ruby/rubyprimtypes.swg,19,%ruby_aux_method@*/
+/*@SWIG:/usr/share/swig2.0/ruby/rubyprimtypes.swg,19,%ruby_aux_method@*/
 SWIGINTERN VALUE SWIG_AUX_NUM2ULONG(VALUE *args)
 {
   VALUE obj = args[0];
@@ -2497,33 +2497,6 @@ fail:
   return Qnil;
 }
 
-SWIGINTERN VALUE
-_wrap_serialParity(int argc, VALUE *argv, VALUE self) {
-  int arg1,arg2 ;
-  int val1,val2 ;
-  int ecode1 = 0, ecode2 = 0 ;
-  
-  if ((argc < 2) || (argc > 2)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
-  }
-  ecode1 = SWIG_AsVal_int(argv[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "int","serialParity", 1, argv[0] ));
-  } 
-  arg1 = (int)(val1);
-
-  ecode2 = SWIG_AsVal_int(argv[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "int","serialParity", 1, argv[1] ));
-  } 
-  arg2 = (int)(val2);
-  serialParity(arg1,arg2);
-  return Qnil;
-fail:
-  return Qnil;
-}
-
-
 
 SWIGINTERN VALUE
 _wrap_serialGetchar(int argc, VALUE *argv, VALUE self) {
@@ -2544,6 +2517,59 @@ _wrap_serialGetchar(int argc, VALUE *argv, VALUE self) {
   result = (int)serialGetchar(arg1);
   vresult = SWIG_From_int((int)(result));
   return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_serialFlush(int argc, VALUE *argv, VALUE self) {
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_int(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "int","serialFlush", 1, argv[0] ));
+  } 
+  arg1 = (int)(val1);
+  result = (int)serialFlush(arg1);
+  vresult = SWIG_From_int((int)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_serialParity(int argc, VALUE *argv, VALUE self) {
+  int arg1 ;
+  int arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_int(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "int","serialParity", 1, argv[0] ));
+  } 
+  arg1 = (int)(val1);
+  ecode2 = SWIG_AsVal_int(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "int","serialParity", 2, argv[1] ));
+  } 
+  arg2 = (int)(val2);
+  serialParity(arg1,arg2);
+  return Qnil;
 fail:
   return Qnil;
 }
@@ -2874,6 +2900,7 @@ SWIGEXPORT void Init_wiringpi(void) {
   rb_define_module_function(mWiringpi, "serialPuts", _wrap_serialPuts, -1);
   rb_define_module_function(mWiringpi, "serialDataAvail", _wrap_serialDataAvail, -1);
   rb_define_module_function(mWiringpi, "serialGetchar", _wrap_serialGetchar, -1);
+  rb_define_module_function(mWiringpi, "serialFlush", _wrap_serialFlush, -1);
   rb_define_module_function(mWiringpi, "serialParity", _wrap_serialParity, -1);
   rb_define_module_function(mWiringpi, "serialPrintf", _wrap_serialPrintf, -1);
 }
