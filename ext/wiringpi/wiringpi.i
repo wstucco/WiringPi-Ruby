@@ -31,6 +31,6 @@ extern void  serialPutchar   (int fd, uint8_t c) ;
 extern void  serialPuts      (int fd, char *s) ;
 extern int   serialDataAvail (int fd) ;
 extern int   serialGetchar   (int fd) ;
-extern int   serialFlush     (int fd) ;
+extern void  serialFlush     (int fd) ;
 extern void  serialParity    (int fd, int parity) ;
 extern void  serialPrintf    (int fd, char *message, ...) ;
